@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Perfumes — 100% Original</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background: #f1f5f9; color: #0f172a; }
+    .container { max-width: 1220px; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* Portada / Encabezado atractivo */
+    .header {
+      background:
+        radial-gradient(circle at 85% 20%, rgba(217, 119, 6, 0.24), transparent 45%),
+        linear-gradient(135deg, #090d16 0%, #0f172a 55%, #1e293b 100%);
+      color: #fff;
+      padding: 2.25rem 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 4px solid #d97706;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+    }
+    .hero-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #e2e8f0;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+    .us-flag {
+      width: 20px;
+      height: 14px;
+      border-radius: 2px;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+      flex-shrink: 0;
+      display: block;
+    }
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .header p {
+      color: #cbd5e1;
+      font-size: 0.96rem;
+      margin-top: 0.45rem;
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .header-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #16a34a;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.8rem 1.15rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgba(22, 163, 74, 0.3);
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .header-wa-btn:hover {
+      background: #15803d;
+      transform: translateY(-2px);
+    }
+
+    /* Sello 100% Original dorado */
+    .gold-seal {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.2rem;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #fde68a 0%, #f59e0b 48%, #b45309 100%);
+      color: #1c1204;
+      box-shadow:
+        0 10px 24px rgba(180, 83, 9, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.75);
+      border: 1px solid #fef08a;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .seal-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(28, 18, 4, 0.14);
+      border: 1.5px solid rgba(28, 18, 4, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1rem;
+    }
+    .seal-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .seal-title {
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .seal-sub {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      margin-top: 0.15rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero-content { flex-direction: column; align-items: flex-start; }
+      .header h1 { font-size: 1.6rem; }
+      .gold-seal { padding: 0.6rem 0.95rem; }
+      .seal-title { font-size: 0.92rem; }
+    }
+
+    .controls {
+      display: grid; grid-template-columns: 1fr auto auto; gap: 0.85rem; align-items: center;
+      background: #fff; padding: 1rem 1.2rem; border-radius: 12px; margin-bottom: 1.5rem;
+      border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    @media (max-width: 820px) { .controls { grid-template-columns: 1fr; } }
+
+    input, select {
+      padding: 0.6rem 0.9rem; border: 1px solid #cbd5e1; border-radius: 8px;
+      font-size: 0.9rem; background: #fff; outline: none;
+    }
+    input:focus, select:focus { border-color: #b45309; }
+
+    .filters { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 0.55rem 0.95rem; border: 1px solid #cbd5e1; background: #f8fafc;
+      border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem; color: #334155;
+    }
+    .filter-btn.active { background: #0f172a; color: #fff; border-color: #0f172a; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+      gap: 1.25rem; padding-bottom: 3rem; align-items: stretch;
+    }
+
+    .card {
+      background: #fff; border-radius: 12px; padding: 1.15rem; border: 1px solid #e2e8f0;
+      display: flex; flex-direction: column; box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(15,23,42,0.08); }
+
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+    .badge { font-size: 0.7rem; font-weight: 700; padding: 0.22rem 0.6rem; border-radius: 99px; text-transform: uppercase; }
+    .Mujer { background: #fce7f3; color: #be185d; }
+    .Hombre { background: #dbeafe; color: #1d4ed8; }
+    .Unisex { background: #ede9fe; color: #6d28d9; }
+    .size-tag { font-size: 0.75rem; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 0.2rem 0.55rem; border-radius: 6px; }
+
+    .img-box {
+      height: 210px; width: 100%; display: flex; align-items: center; justify-content: center;
+      border: 1px solid #f1f5f9; border-radius: 10px; margin-bottom: 0.85rem; padding: 0.6rem; background: #ffffff;
+    }
+    .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+    .no-img {
+      height: 210px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 10px; color: #94a3b8;
+      font-size: 0.82rem; margin-bottom: 0.85rem; text-align: center; padding: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.35;
+      height: 2.75rem;
+      overflow: hidden;
+      margin-bottom: 0.6rem;
+    }
+
+    .details {
+      background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 8px; padding: 0.7rem;
+      margin-bottom: 0.9rem; flex-grow: 1; display: flex; flex-direction: column; gap: 0.4rem;
+      font-size: 0.83rem; color: #334155; line-height: 1.4;
+    }
+    .details strong { color: #0f172a; }
+
+    .price-tag {
+      margin-top: auto; background: #fef3c7; border: 1px solid #fde68a;
+      padding: 0.65rem 0.9rem; border-radius: 8px; display: flex; justify-content: center; align-items: center;
+      margin-bottom: 0.65rem;
+    }
+    .price-tag strong { font-size: 1.25rem; font-weight: 800; color: #b45309; }
+
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      width: 100%;
+      padding: 0.62rem 0.9rem;
+      border-radius: 8px;
+      background: #16a34a;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: background 0.15s ease;
+    }
+    .wa-btn:hover {
+      background: #15803d;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container hero-content">
+      <div>
+        <div class="hero-eyebrow">
+          <svg class="us-flag" viewBox="0 0 24 16" aria-label="Bandera de Estados Unidos" role="img">
+            <rect width="24" height="16" fill="#ffffff"/>
+            <path d="M0 1.23h24M0 3.69h24M0 6.15h24M0 8.62h24M0 11.08h24M0 13.54h24M0 15.9h24" stroke="#b91c1c" stroke-width="1.23"/>
+            <rect width="10.5" height="8.62" fill="#1e3a8a"/>
+            <circle cx="2.2" cy="2.1" r="0.65" fill="#ffffff"/>
+            <circle cx="5.25" cy="2.1" r="0.65" fill="#ffffff"/>
+            <circle cx="8.3" cy="2.1" r="0.65" fill="#ffffff"/>
+            <circle cx="3.7" cy="4.3" r="0.65" fill="#ffffff"/>
+            <circle cx="6.8" cy="4.3" r="0.65" fill="#ffffff"/>
+            <circle cx="2.2" cy="6.5" r="0.65" fill="#ffffff"/>
+            <circle cx="5.25" cy="6.5" r="0.65" fill="#ffffff"/>
+            <circle cx="8.3" cy="6.5" r="0.65" fill="#ffffff"/>
+          </svg>
+          <span>Selección de importación · EE. UU.</span>
+        </div>
+        <h1>Catálogo de Perfumes</h1>
+        <p>Notas olfativas, ocasiones ideales y precios oficiales en una selección curada.</p>
+      </div>
+
+      <div class="hero-actions">
+        <a id="headerWaLink" class="header-wa-btn" href="#" target="_blank" rel="noopener noreferrer">
+          <span>WhatsApp</span>
+        </a>
+
+        <div class="gold-seal" aria-label="100% Original">
+          <div class="seal-icon">✓</div>
+          <div class="seal-text">
+            <span class="seal-title">100% Original</span>
+            <span class="seal-sub">Calidad garantizada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <input type="text" id="searchInput" placeholder="Buscar perfume, marca o nota (ej. vainilla, oficina, oud)...">
+      <div class="filters">
+        <button class="filter-btn active" data-cat="Todos">Todos (22)</button>
+        <button class="filter-btn" data-cat="Mujer">Mujer</button>
+        <button class="filter-btn" data-cat="Hombre">Hombre</button>
+        <button class="filter-btn" data-cat="Unisex">Unisex</button>
+      </div>
+      <select id="sortSelect">
+        <option value="default">Orden original</option>
+        <option value="price-asc">Precio: menor a mayor</option>
+        <option value="price-desc">Precio: mayor a menor</option>
+        <option value="name">Nombre: A - Z</option>
+      </select>
+    </section>
+
+    <section class="grid" id="grid"></section>
+  </main>
+
+  <script>
+    const WHATSAPP_NUMERO = "+584262624908";
+
+    function crearLinkWhatsApp(mensaje) {
+      return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+    }
+
+    document.getElementById("headerWaLink").href = crearLinkWhatsApp(
+      "Hola, quisiera consultar disponibilidad y precios del catálogo de perfumes."
+    );
+
+    const perfumes = [
+      { nombre: "Lattafa Yara", info: "3.4 oz EDP", genero: "Mujer", precio: 51, img: "lattafa yara.jpeg", notas: "Dulce cremoso (fresa, orquídea, vainilla y almizcle).", ocasion: "Uso diario, salidas casuales y tardes." },
+      { nombre: "Lattafa Asad", info: "3.4 oz EDP", genero: "Hombre", precio: 48, img: "lattafa asad.jpeg", notas: "Imponente, cálido y especiado (pimienta negra, tabaco, café y ámbar).", ocasion: "Noches, eventos formales o salidas especiales." },
+      { nombre: "Armaf Tag Her", info: "3.4 oz EDP", genero: "Mujer", precio: 52, img: "Armaf Tag Her.jpeg", notas: "Cítrico floral con fondo dulce (bergamota, neroli y caramelo).", ocasion: "Ideal para el día y la oficina." },
+      { nombre: "Armaf Odyssey Candee", info: "3.4 oz EDP", genero: "Mujer", precio: 48, img: "odyssey candee.jpeg", notas: "Dulce, acaramelado y juguetón (frutas dulces, caramelo y vainilla).", ocasion: "Salidas casuales, tardes o encuentros sociales." },
+      { nombre: "Dumont Nitro Red Pour Homme", info: "3.4 oz EDP", genero: "Hombre", precio: 62, img: "dumont nitro red.jpeg", notas: "Fresco, frutal y de alta proyección (manzana, sandía, lavanda y cedro).", ocasion: "Fiestas, salidas casuales y días de máxima duración." },
+      { nombre: "Armaf Odyssey Mandarin Sky", info: "3.4 oz EDP", genero: "Unisex", precio: 54, img: "odyssey mandarin sky.jpeg", notas: "Fresco y dulce, de gran desempeño en clima fresco.", ocasion: "Citas, salidas nocturnas o lugares con aire acondicionado." },
+      { nombre: "Maison Alhambra Sugar Me Pistachio Chocolate", info: "3.4 oz EDP", genero: "Mujer", precio: 54, img: "Maison Alhambra Sugar Me Pistachio Chocolate.jpeg", notas: "Dulce gourmand tipo postre (crema batida, pistacho y chocolate).", ocasion: "Noches, tardes frescas o aire acondicionado." },
+      { nombre: "Maison Alhambra Delilah", info: "3.4 oz EDP", genero: "Mujer", precio: 44, img: "delilah maisson alhambra.jpeg", notas: "Floral elegante y fresco (lichi, ruibarbo y rosa turca).", ocasion: "Uso diario en trabajo, universidad y citas románticas." },
+      { nombre: "Rasasi Hawas For Him", info: "3.4 oz EDP", genero: "Hombre", precio: 60, img: "hawas for him.jpeg", notas: "Acuático, frutal y seductor (manzana, notas marinas, canela y ámbar gris).", ocasion: "Muy versátil: uso diario, clima cálido y salidas sociales." },
+      { nombre: "Armaf Club De Nuit Intense", info: "3.6 oz EDP", genero: "Mujer", precio: 60, img: "club de nuit intense woman.jpeg", notas: "Denso, especiado y amaderado (rosa, azafrán, pachulí y oud).", ocasion: "Noches, eventos formales, galas o salones fríos." },
+      { nombre: "Antonio Banderas The Icon Splendid", info: "3.4 oz EDP", genero: "Mujer", precio: 40, img: "antonio banderas the icon.jpeg", notas: "Floral, leñoso y luminoso (pimienta rosa, peonía y sándalo).", ocasion: "Excelente opción para la oficina." },
+      { nombre: "Antonio Banderas Black Seduction", info: "3.4 oz EDT", genero: "Hombre", precio: 40, img: "antonio banderas black seduccion.jpeg", notas: "Cálido y especiado (bergamota, cardamomo, nuez moscada y haba tonka).", ocasion: "Salidas nocturnas y citas." },
+      { nombre: "Armaf Dunescape", info: "3.4 oz EDP", genero: "Hombre", precio: 74, img: "armaf dunescape.jpeg", notas: "Fresco, marino y cítrico (mandarina, notas marinas y cedro).", ocasion: "Día a día, oficina y salidas de tarde-noche en clima cálido." },
+      { nombre: "Lattafa Her Confession", info: "3.4 oz EDP", genero: "Mujer", precio: 68, img: "lattafa her confession.jpeg", notas: "Cremoso, especiado y envolvente (tuberosa, canela, incienso y vainilla).", ocasion: "Noches, citas románticas y eventos especiales." },
+      { nombre: "Issey Miyake Sport", info: "3.4 oz EDT", genero: "Hombre", precio: 68, img: "issey miyake spor.jpeg", notas: "Cítrico, energizante y limpio (toronja, bergamota, vetiver y cedro).", ocasion: "Gimnasio, deporte, aire libre y calor intenso." },
+      { nombre: "Salvatore Ferragamo Uomo", info: "3.4 oz EDT", genero: "Hombre", precio: 76, img: "salvatore ferragamo.jpeg", notas: "Dulce gourmand refinado (tiramisú, café, cardamomo y sándalo).", ocasion: "Salidas nocturnas y citas románticas." },
+      { nombre: "Mont Blanc Individuel", info: "2.5 oz EDT", genero: "Hombre", precio: 56, img: "mont black individuel.jpeg", notas: "Limpio y pulcro (lavanda, frambuesa, menta y sándalo).", ocasion: "Oficina, entorno profesional y uso diario sin abrumar." },
+      { nombre: "Armaf Club De Nuit Women", info: "3.6 oz EDP", genero: "Mujer", precio: 56, img: "club de nuit.jpeg", notas: "Cítrico floral sofisticado (naranja, durazno, rosa y pachulí).", ocasion: "Muy versátil: oficina, diario y eventos diurnos o nocturnos." },
+      { nombre: "Lattafa Pride Art of Universe", info: "3.4 oz EDP", genero: "Hombre", precio: 76, img: "lattafa pride arf of universe.jpeg", notas: "Cítrico frutal vibrante sobre maderas y especias finas.", ocasion: "Rutina diaria, oficina, universidad y climas cálidos." },
+      { nombre: "Emper The Black 92", info: "3.4 oz EDP", genero: "Unisex", precio: 46, img: "Emper The Black 92.jpeg", notas: "Amaderado y fresco.", ocasion: "Destaca especialmente en climas fríos, frescos o salidas nocturnas." },
+      { nombre: "Guess Pink", info: "2.5 oz EDT", genero: "Mujer", precio: 46, img: "guess pink.jpeg", notas: "Frutal floral ligero y juvenil (manzana verde, peonía y fresia).", ocasion: "Universidad, oficina, mañanas calurosas y uso diario." },
+      { nombre: "Lattafa Layaan", info: "2.5 oz EDP", genero: "Mujer", precio: 64, img: "lattafa layaan.jpeg", notas: "Frutal floral tropical y suave (piña, flores blancas y vainilla).", ocasion: "Días calurosos, salidas informales y uso diario." }
+    ];
+
+    let categoria = "Todos";
+    let busqueda = "";
+    let orden = "default";
+
+    function mostrar() {
+      let lista = perfumes.filter(p =>
+        (categoria === "Todos" || p.genero === categoria) &&
+        `${p.nombre} ${p.notas} ${p.ocasion}`.toLowerCase().includes(busqueda.toLowerCase())
+      );
+
+      if (orden === "price-asc") lista.sort((a, b) => a.precio - b.precio);
+      if (orden === "price-desc") lista.sort((a, b) => b.precio - a.precio);
+      if (orden === "name") lista.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+      document.getElementById("grid").innerHTML = lista.map(p => {
+        const waUrl = crearLinkWhatsApp(
+          `Hola, me interesa el perfume *${p.nombre}* (${p.info}) - $${p.precio.toFixed(2)}. ¿Está disponible?`
+        );
+        return `
+          <article class="card">
+            <div class="card-header">
+              <span class="badge ${p.genero}">${p.genero}</span>
+              <span class="size-tag">${p.info}</span>
+            </div>
+            ${p.img
+              ? `<div class="img-box"><img src="img/${p.img}" alt="${p.nombre}"></div>`
+              : `<div class="no-img">Foto pendiente<br><small>${p.nombre}</small></div>`}
+            <h2 class="card-title">${p.nombre}</h2>
+            <div class="details">
+              <div><strong>Notas:</strong> ${p.notas}</div>
+              <div><strong>Ocasión:</strong> ${p.ocasion}</div>
+            </div>
+            <div class="price-tag">
+              <strong>$${p.precio.toFixed(2)}</strong>
+            </div>
+            <a class="wa-btn" href="${waUrl}" target="_blank" rel="noopener noreferrer">
+              Consultar por WhatsApp
+            </a>
+          </article>
+        `;
+      }).join("");
+    }
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.onclick = () => {
+        document.querySelector(".filter-btn.active").classList.remove("active");
+        btn.classList.add("active");
+        categoria = btn.dataset.cat;
+        mostrar();
+      };
+    });
+
+    document.getElementById("searchInput").oninput = e => { busqueda = e.target.value; mostrar(); };
+    document.getElementById("sortSelect").onchange = e => { orden = e.target.value; mostrar(); };
+
+    mostrar();
+  </script>
+</body>
+</html>
